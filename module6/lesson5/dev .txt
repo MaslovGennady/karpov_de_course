@@ -1,0 +1,63 @@
+ssh -i ... ubuntu@...
+ssh -i ... ubuntu@...
+
+https://github.com/stockblog/webinar_mlflow
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install python3-pip
+
+pg_user
+user
+...
+
+внутренний айпи бд
+...
+...
+
+имя бакета
+...
+
+креды акка в s3
+...
+api_key_id ...
+api_key ...
+
+env
+MLFLOW_S3_ENDPOINT_URL=...
+MLFLOW_TRACKING_URI=...
+
+[default]
+aws_access_key_id = ...
+aws_secret_access_key = ...
+
+mlflow server --backend-store-uri postgresql://user:...@.../... --default-artifact-root s3://.../mlflow/ -h 0.0.0.0 -p 8000
+
+http://...:...
+
+
+[Unit]
+Description=MLflow Tracking Server
+After=network.target
+[Service]
+Environment=MLFLOW_S3_ENDPOINT_URL=...
+Restart=on-failure
+RestartSec=30
+StandardOutput=file:/home/ubuntu/mlflow_logs/stdout.log
+StandardError=file:/home/ubuntu/mlflow_errors/stderr.log
+User=ubuntu
+ExecStart=/bin/bash -c 'PATH=/usr/bin/python3:$PATH exec mlflow server --backend-store-uri postgresql://user:...@.../... --default-artifact-root s3://.../mlflow/ -h 0.0.0.0 -p 8000'
+[Install]
+WantedBy=multi-user.target
+
+sudo pip install mlflow
+
+sudo systemctl status mlflow-tracking
+
+JHUB
+curl -L https://tljh.jupyter.org/bootstrap.py | sudo -E python3 - --admin ...
+
+http://...
+
+...
+...

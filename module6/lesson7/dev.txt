@@ -1,0 +1,21 @@
+
+bucket ...
+account ...
+s3_key_id
+s3_key
+--------------------------
+git clone ... ...
+--------------------------
+kubectl create secret generic s3-secret --from-literal=S3_ACCESS_KEY='...' --from-literal=S3_SECRET_KEY='...'
+--------------------------
+kubectl create configmap s3path-config --from-literal=S3_PATH='s3a://.../evo_train_new.csv' --from-literal=S3_WRITE_PATH='s3a://.../evo_train_csv/'
+--------------------------
+kubectl apply -f ~/.../yamls_configs/s3read_write_with_secret_cfgmap.yaml
+--------------------------
+kubectl create secret generic s3-secret --from-literal=S3_ACCESS_KEY='...' --from-literal=S3_SECRET_KEY='...' -n spark-history-server
+--------------------------
+helm install -f ~/webinar_spark_k8s2/yamls_configs/values-hs.yaml my-spark-history-server stable/spark-history-server --namespace spark-history-server
+--------------------------
+EXTERNAL-IP ...  ...
+--------------------------
+kubectl apply -f ~/webinar_spark_k8s2/yamls_configs/s3_hs_server_test.yaml
