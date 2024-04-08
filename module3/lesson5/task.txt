@@ -1,0 +1,13 @@
+ssh -i ...
+scp ...
+
+export TASK_OUTPUT=...
+
+hadoop fs -rm -r $TASK_OUTPUT
+
+hadoop jar "$HADOOP_MAPRED_HOME"/hadoop-streaming.jar \
+-Dmapred.job.name='Taxi month analytics job' \
+-Dmapred.reduce.tasks=1 \
+-file /tmp/taxi_month_analytics_job/mapper.py -mapper /tmp/taxi_month_analytics_job/mapper.py \
+-file /tmp/taxi_month_analytics_job/reducer.py -reducer /tmp/taxi_month_analytics_job/reducer.py \
+-input /user/ubuntu/2020 -output $TASK_OUTPUT
