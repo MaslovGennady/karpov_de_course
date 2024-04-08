@@ -1,0 +1,11 @@
+pip show pyspark
+
+set SPARK_HOME=...
+set HADOOP_HOME=%SPARK_HOME%
+set PYTHONPATH=%SPARK_HOME%\python;%SPARK_HOME%\pyspark\python\lib\py4j-0.10.9.7-src.zip;%PYTHONPATH%
+
+python3 PySparkJob1.py --flights_path=flights.parquet --result_path="./output/top_10_flights.parquet"
+
+python PySparkJob4.py --flights_path=flights.parquet --airlines_path=airlines.parquet --airports_path=airports.parquet --result_path=result
+
+python PySparkJob5.py --flights_path=flights.parquet --airlines_path=airlines.parquet --result_path=result
